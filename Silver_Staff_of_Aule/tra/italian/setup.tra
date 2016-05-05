@@ -1,0 +1,117 @@
+@101  = ~Bastone Argentato di Aule~
+@102  = ~Icone Alternative~
+@103  = ~Icona del Bastone del Colpire~
+@104  = ~Icona N.1 creata da CrevsDaak (scelta predefinita)~
+@105  = ~Icona N.2 creata da CrevsDaak~
+@106  = ~Questa mod richiede Tutu TotSC, vanilla TotSC, BGEE or BGT!~
+@107  = ~Questa componente richiede il Bastone Argentato.~
+@108  = ~Tutu TotSC individuato!~
+@109  = ~Vanilla TotSC individuato!~
+@110  = ~BGEE individuato!~
+@111  = ~BGT individuato!~
+@112  = ~Vecchi EFF individuati!~
+@113  = ~Nuovi EFF individuati!~
+@114  = ~La descrizione del bastone e' stata aggiornata!~
+@115  = ~La descrizione del bastone e' stata sostituita!~
+
+
+@-1000= "La mod %TP2_FILE_NAME% ha"
+@-1001= "componenti facoltative distinte.
+Per risparmiare tempo, si puo' scegliere cosa fare complessivamente,
+invece di ripondere per ciascuna separatamente.
+"
+@-1002= "Che cosa si deve fare con tutte le componenti che NON SONO ANCORA installate ?
+[I]nstallarle, [S]altarle, [A] Chiedere per ciascuna ? "
+@-1003= "Che cosa si deve fare con tutte le componenti che SONO GIA' installate ?
+[R]einstallarle, [U] Disinstallarle, [S]altarle, [A] Chiedere per ciascuna ? "
+
+@-1004= "Si prega di inviare il file"
+@-1005= "a"
+
+@-1006= "Installare la componente ["
+@-1007= "]?
+[R]einstallare, [N]essun cambiamento, [U] Disinstallare o [Q] Abortire ? "
+@-1008= "]?
+[I]nstallare, [N]on installare o [Q] Abortire ? "
+
+@-1009= "Inserire parte del nome del modulo: "
+
+@-1010= "Reinstallazione della componente ["
+@-1011= "] "
+@-1012= "Reinstallazione nella lingua"
+
+@-1013= "Rimozione preliminare della vecchia installazione di ["
+@-1014= "] ..."
+@-1015= "RIMOSSA CON SUCCESSO LA VECCHIA"
+
+@-1016= "Installazione in corso"
+@-1017= "ERRORE durante l'installazione di ["
+@-1018= "], ripristinato lo stato precedente"
+@-1019= "INSTALLAZIONE RIUSCITA     "
+@-1020= "Saltata"
+@-1021= "Rimozione di ["
+@-1022= "] (componente #"
+@-1023= ")"
+@-1024= "RIMOSSA CON SUCCESSO ["
+
+@-1025= "]?
+[R]einstallare, [N]essun cambiamento, [U] Disinstallare, [Q] Abortire o
+scegliere tra:"
+@-1026= "]?
+[N]o, [Q] Abortire o scegliere tra:"
+@-1027= " (attualmente installato)"
+
+@-1028= "Si desidera visualizzare le componenti di ["
+@-1029= "]?
+[Y] Si, [N]o? "
+
+@-1030= "]?
+si scelga tra:"
+@-1031= "]?
+[R]einstallare, [N]essun cambiamento, [Q] Abortire o scegliere tra:"
+@-1032= "INSTALLAZIONE FALLITA A CAUSA DI ERRORI"
+@-1033= "INSTALLATO CON AVVERTENZE    "
+@-1034= "Si desidera visualizzare il ReadMe? [Y] Si [N]o"
+@-1035= "Lingua usata"
+
+@-1036= "Saltato il GRUPPO ["
+@-1037= "] perche' non soddisfa i requisiti necessari."
+
+@-1038= "[A] chiedi cosa fare per ciascuna componente, [S]alta tutto, o
+scegli un valore predefinito:"
+@-1039= "[A] chiedi cosa fare per ciascuna componente, [R]einstalla la
+configurazione attuale, [U] Disinstalla tutto, [S]alta tutto, o
+scegli un valore predefinito:"
+
+@-1040= "
+Si prega di scegliere la lingua desiderata per il gioco.
+Se in seguito si vorra' giocare in una lingua diversa, si
+dovra' modificare il file weidu.conf e reinstallare le mod.
+
+"
+@-1041= "Ceco"
+@-1042= "Tedesco"
+@-1043= "Inglese"
+@-1044= "Spagnolo"
+@-1045= "Francese"
+@-1046= "Italiano"
+@-1047= "Polacco"
+@-1048= "Portoghese"
+@-1049= "Turco"
+@-1050= "Giapponese"
+@-1051= "Coreano"
+@-1052= "Cinese semplificato"
+@-1053= "Russo"
+@-1054= "Ucraino"
+
+@-1060= "
+Questo gioco e' disponibile in varie lingue, ma WeiDU non sa quale
+lingua era in uso quando questa mod e' stata installata.
+
+Si prega di indicare quale lingua era in uso durante l'installazione
+di questa mod. La lingua scelta verra' usata da WeiDU fino al suo
+arresto ma non sara' memorizzata.
+"
+@-1061= "
+Utilizzando"
+@-1062= " e "
