@@ -1,8 +1,8 @@
-Silver Staff of Aule (version 10.0 BETA)
+Silver Staff of Aule (version 10.0 ALPHA)
 ----------------------------------------
 
 Author: Erg (at https://forums.beamdog.com)
-BG Version: This mod works with Tutu TotSC, vanilla TotSC, BG:EE and BGT
+BG Version: This mod works with Tutu TotSC, vanilla TotSC, BG:EE, EET and BGT
 Languages: English, Italian, Polish
 
 ///\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\
@@ -30,11 +30,11 @@ been increased from 5500 to 7500 gold (base price, actual price as usual
 will depend on reputation and charisma). The staff icons and colours have
 been changed to make it look more like silver.
 
-An attempt is made to update the in-game description for the staff, but it
-may fail if the description has been substantially altered by another mod,
-or an official BG:EE update. In this case the description will be entirely
-replaced by a new one instead. You will be notified during mod installation
-if this happens.
+The in-game description for the staff will be automatically updated and
+will account also for changes made by other mods previously installed.
+
+NOTE for EET:
+This mod can be installed either before or after EET.
 
 NOTE for BGT:
 BGT replaces the Aule's Staff with the Martial Staff. Therefore, this mod
@@ -45,11 +45,11 @@ have already browsed the items in the Ulgoth's Inn store. As a workaround
 for ongoing games, it is possible to use the CLUA console to get the staff.
 
 Item Codes for the CLUA Console:
-This mod uses the following item codes for the Aule's Staff:
 
-STAF08   (BG:EE and vanilla TotSC)
-_STAF08  (Tutu TotSC only)
-ER_STA08 (BGT only)
+_STAF08  (Tutu TotSC)
+STAF08   (vanilla TotSC and BG:EE)
+STAF08_  (EET)
+ER_STA08 (BGT)
 
 _________________________
 Note for Steam/GoG users:

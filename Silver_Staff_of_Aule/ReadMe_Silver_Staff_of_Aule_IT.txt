@@ -1,8 +1,8 @@
-Il Bastone Argentato di Aule (versione 10.0 BETA)
+Il Bastone Argentato di Aule (versione 10.0 ALPHA)
 -------------------------------------------------
 
 Autore: Erg (https://forums.beamdog.com)
-Compatibilità: Funziona con Tutu TotSC, vanilla TotSC, BG:EE e BGT
+Compatibilità: Funziona con Tutu TotSC, vanilla TotSC, BG:EE, EET e BGT
 Lingue: Italiano, Inglese, Polacco
 
 ///\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\
@@ -31,18 +31,18 @@ al prezzo base, il prezzo effettivo dipenderà come al solito da una combinazione
 di reputazione e carisma). Il colore e la forma del bastone sono stati modificati
 per dargli un aspetto argentato.
 
-La mod cercherà di aggiornare la descrizione del bastone, ma potrebbe fallire se
-quest'ultima è stata modificata in modo sostanziale da un altro mod o da una patch
-ufficiale. In questo caso la descrizione verrà interamente sostituita da una nuova.
-Se succede, verrete avvisati durante la procedura di installazione da un apposito
-messaggio.
+La descrizione del bastone verrà aggiornata automaticamente e terrà conto anche
+delle modifiche effettuate da altre mod installate precedentemente.
+
+NOTA per EET:
+Questa mod può essere installata sia prima che dopo EET.
 
 NOTA per BGT:
 BGT sostituisce il Bastone di Aule con il Bastone Marziale. Quindi questa mod
 ripristina il Bastone di Aule nella locanda di Ulgoth's Beard, ma non modificherà
 altre istanze del Bastone Marziale. Se avete già visitato la locanda ed esaminato
-gli oggetti in vendita, sarà necessario ricominciare una nuova partita per il
-corretto funzionamento di questa mod.
+gli oggetti in vendita, sarà necessario iniziare una nuova partita per il corretto
+funzionamento di questa mod.
 
 Ciò vale solo per BGT. Per le altre versioni di BG, incluso BG:EE, non si dovrà
 iniziare una nuova partita.
@@ -51,8 +51,9 @@ Gli utenti di BGT possono eventualmente utilizzare la console per creare il
 bastone. I codici sono i seguenti (includendo per completezza anche quelli per
 le altre versioni di BG):
 
-STAF08   (BG:EE e TotSC originale)
 _STAF08  (TotSC Tutu)
+STAF08   (TotSC originale e BG:EE)
+STAF08_  (EET)
 ER_STA08 (BGT)
 
 ___________________________________
