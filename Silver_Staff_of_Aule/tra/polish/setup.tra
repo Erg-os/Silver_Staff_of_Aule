@@ -1,15 +1,19 @@
 @101  = ~Srebrny kij Aule'a~
 @102  = ~Alternatywne ikony~
-@103  = ~Ikona Kija uderzania~
-@104  = ~Ikona nr 1 autorstwa CrevsDaak'a (domyslna)~
-@105  = ~Ikona nr 2 autorstwa CrevsDaak'a~
-@106  = ~Modyfikacja ta wymaga do dzialania podstawowej wersji OzWM, OzWM Tutu, BGEE lub BGT!~
+@103  = ~Ikona nr 1 autorstwa CrevsDaak'a (domyslna)~
+@104  = ~Ikona nr 2 autorstwa CrevsDaak'a~
+@105  = ~Ikona Kija uderzania~
+@106  = ~Modyfikacja ta wymaga do dzialania podstawowej wersji OzWM, OzWM Tutu, BGEE, EET lub BGT!~
 @107  = ~Aby moc wybrac te opcje musisz zainstalowac Srebrny kij.~
-@108  = ~Wykryto OzWM Tutu!~
-@109  = ~Wykryto podstawowa wersje OzWM!~
-@110  = ~Wykryto BGEE!~
-@111  = ~Wykryto BGT!~
-@112  = ~Wykryto stare pliki EFF!~
-@113  = ~Wykryto nowe pliki EFF!~
-@114  = ~Opis kija zostal zaktualizowany!~
-@115  = ~Opis kija zostal zastapiony!~
+@108  = ~Wykryto OzWM Tutu!
+~
+@109  = ~Wykryto podstawowa wersje OzWM!
+~
+@110  = ~Wykryto BGEE!
+~
+@111  = ~Wykryto EET!
+~
+@112  = ~Wykryto BGT!
+~
+@113  = ~Wykryto stare pliki EFF!~
+@114  = ~Wykryto nowe pliki EFF!~

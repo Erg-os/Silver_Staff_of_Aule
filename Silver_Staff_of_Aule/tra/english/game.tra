@@ -1,28 +1,63 @@
-@0    = ~have a core of iron~
-@1    = ~be made of silver surrounding a core of cold iron~
-@2    = ~Quarter Staff +3: 'Silver Staff of Aule'
-This finely crafted staff was among the spoils taken from the invaders of Durlag's Tower. It is very deadly in combat, and was apparently the property of a spellcaster that enjoyed standing on the front lines. It appears to be made of silver surrounding a core of cold iron, yet it is comparable in weight to a normal weapon of its type. Part of the enchantment seems to come from the hide that strengthens the grip: Leather no doubt made from a battle-ready creature of some sort. With the tastes and inclinations of the attackers of the tower well documented, the hide could be almost anything... or anyone.
+@0    = ~Silver Staff of Aule~
+@1    = ~Staff +3:  'Silver Staff of Aule'
+~
+@2    = ~This finely crafted staff was among the spoils taken from the invaders of Durlag's Tower. It is very deadly in combat, and was apparently the property of a spellcaster that enjoyed standing on the front lines. It appears to be made of silver surrounding a core of cold iron, yet it is comparable in weight to a normal weapon of its type. Part of the enchantment seems to come from the hide that strengthens the grip: Leather no doubt made from a battle-ready creature of some sort. With the tastes and inclinations of the attackers of the tower well documented, the hide could be almost anything... or anyone.
 
 STATISTICS:
-
-THAC0: +3 (+4 vs. Lycanthropes)
-Damage: 1D6+3 (+4 vs. Lycanthropes)
-Damage type: crushing
-Weight: 3
-Speed Factor: 1
-Proficiency Type: Quarterstaff
-Type: 2-handed
-Requires: 5 Strength
-Not Usable By:
- Monk
 ~
-@3    = ~Damage type:.+[%LNL%%MNL%%WNL%]~
-@4    = ~THAC[0O]:\(.+[0-9]\)~
-@5    = ~THAC0:\1, +4 vs. lycanthropes~
-@6    = ~Damage:\([ 0-9D\+]*[0-9]\).*~
-@7    = ~Damage:\1, +4 vs. lycanthropes
-Damage type: Crushing~
-@8    = ~silver~
-@9    = ~THAC0.+lycanthropes~
-@10   = ~Damage.+lycanthropes~
-@11   = ~Silver Staff of Aule +3~
+@3    = ~THACO: ~
+@4    = ~ vs. Lycanthropes~
+@5    = ~Damage: ~
+@6    = ~D~
+@7    = ~Damage type: ~
+@8    = ~Speed Factor: ~
+@9    = ~Proficiency Type: ~
+@10   = ~Type: ~
+@11   = ~2-handed~
+@12   = ~1-handed~
+@13   = ~Weight: ~
+@14   = ~Requires:~
+@15   = ~Strength~
+@16   = ~Dexerity~
+@17   = ~Constitution~
+@18   = ~Intelligence~
+@19   = ~Wisdom~
+@20   = ~Charisma~
+@21   = ~THAC[0O]:.+[^!]*~
+@22   = ~Damage:.+[^!]*~
+@23   = ~[^!]*STATISTICS:.*[%LNL%%MNL%%WNL%]\([^!]*\)~
+
+@1000 = ~none~
+@1001 = ~piercing~
+@1002 = ~crushing TUTU/BGT~ // rembember to remove game name when testing is done
+@1003 = ~slashing~
+@1004 = ~missile~
+@1005 = ~fist~
+@1006 = ~piercing or crushing (whichever is better)~
+@1007 = ~piercing or slashing (whichever is better)~
+@1008 = ~crushing or slashing (whichever is better)~
+@1009 = ~blunt missile~
+
+@2000 = ~Bastard Sword~
+@2001 = ~Long Sword~
+@2002 = ~Short Sword~
+@2003 = ~Axe~
+@2004 = ~Two-handed sword~
+@2005 = ~Katana~
+@2006 = ~Scimitar/Wakizashi/Ninja-To~
+@2007 = ~Dagger~
+@2008 = ~War Hammer~
+@2009 = ~Spear~
+@2010 = ~Halberd~
+@2011 = ~Flail/Morningstar~
+@2012 = ~Mace~
+@2013 = ~Staff~
+@2014 = ~Crossbow~
+@2015 = ~Long Bow~
+@2016 = ~Short Bow~
+@2017 = ~Dart~
+@2018 = ~Sling~
+@2019 = ~Club~
+
+@3000 = ~Not Usable By:~
+@3001 = ~Monk~

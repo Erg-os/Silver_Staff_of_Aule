@@ -1,0 +1,15 @@
+// Macro to handle multiple tra encodings (slightly adapted from Wisp's original code)
+DEFINE_ACTION_MACRO er_language BEGIN
+  ACTION_IF GAME_IS ~totsc~ BEGIN
+    LOAD_TRA ~%MOD_FOLDER%/tra/vanilla/english/game.tra~
+    LOAD_TRA ~%MOD_FOLDER%/tra/vanilla/%LANGUAGE%/game.tra~
+  END
+  ACTION_IF GAME_IS ~bgee eet~ BEGIN
+    LOAD_TRA ~%MOD_FOLDER%/tra/bgee/english/game.tra~
+    LOAD_TRA ~%MOD_FOLDER%/tra/bgee/%LANGUAGE%/game.tra~
+  END
+  ACTION_IF GAME_IS ~bgt~ BEGIN
+    LOAD_TRA ~%MOD_FOLDER%/tra/bgt/english/game.tra~
+    LOAD_TRA ~%MOD_FOLDER%/tra/bgt/%LANGUAGE%/game.tra~
+  END
+END

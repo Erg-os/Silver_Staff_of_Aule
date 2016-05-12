@@ -1,5 +1,5 @@
-Silver Staff of Aule (version 9.0)
-----------------------------------
+Silver Staff of Aule (version 10.0 BETA)
+----------------------------------------
 
 Author: Erg (at https://forums.beamdog.com)
 BG Version: This mod works with Tutu TotSC, vanilla TotSC, BG:EE and BGT
@@ -15,7 +15,7 @@ Languages: English, Italian, Polish
 ///           Cahir at https://forums.beamdog.com              \\\
 ///                                                            \\\
 ///  Many thanks to AstroBryGuy at https://forums.beamdog.com  \\\
-///       for provinding in a timely manner an essential       \\\
+///       for providing in a timely manner an essential        \\\
 ///          fix when I was too busy to do it myself           \\\
 ///                                                            \\\
 ///\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\
@@ -83,11 +83,11 @@ https://forums.beamdog.com/discussion/15979/howto-modding-bg-ee-on-the-ipad/p1
 Please note that the above will require jailbreaking.
 
 To iPad users unwilling and/or unable to jailbreak, I can provide, upon request,
-a semplified version of the mod (without custom item description) to be installed
+a simplified version of the mod (without custom item description) to be installed
 using the instructions provided by lunar: 
 https://forums.beamdog.com/discussion/16695/amazing-discovery-overriding-cre-files-without-override-folder-and-jailbreak/p1
 
-Alternatevely, please check this method provided by ScottBrooks:
+Alternatively, please check this method provided by ScottBrooks:
 https://forums.beamdog.com/discussion/comment/633000/#Comment_633000
 
 _______________________
@@ -99,6 +99,10 @@ https://forums.beamdog.com/discussion/43990/how-to-install-mods-on-android/p1
 ________________
 Version History
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+  ??? ?, ???? - Version 10.0
+    Improved the code used to update the item description
+    Enhanced compatibility with other mods
+
   May 5, 2016 - Version 9.0
     The staff no longer hurts its wielder on patched games
     Name of the mod changed to "Silver Staff of Aule"

@@ -1,16 +1,10 @@
 BACKUP ~Silver_Staff_of_Aule/backup~
 AUTHOR ~Erg, at https://forums.beamdog.com~
-VERSION ~v9.0~
+VERSION ~v10.0 BETA~
 
 ALWAYS
-  // Macros to handle multiple tra encodings (slightly adapted from Wisp's original code)
-  DEFINE_ACTION_MACRO bgee_language BEGIN
-    ACTION_IF GAME_IS ~bgee~ BEGIN
-      LOAD_TRA ~%MOD_FOLDER%/tra/bgee/english/game.tra~
-      LOAD_TRA ~%MOD_FOLDER%/tra/bgee/%LANGUAGE%/game.tra~
-    END
-  END
-  LAM bgee_language
+  INCLUDE ~%MOD_FOLDER%\lib\er_lib_lang.tpa~
+  LAM er_language
 END
 
 LANGUAGE ~English~
@@ -31,95 +25,23 @@ LANGUAGE ~Polish~
          ~Silver_Staff_of_Aule/tra/polish/setup.tra~
 
 BEGIN @101
-REQUIRE_PREDICATE GAME_IS ~bgee totsc tutu_totsc bgt~ @106
+REQUIRE_PREDICATE GAME_IS ~tutu_totsc totsc bgee eet bgt~ @106
 
-// Strings from TRA File
-OUTER_SPRINT er_tra1 @0
-OUTER_SPRINT er_tra2 @1
-OUTER_SPRINT er_str0 @2
-OUTER_SPRINT er_tra3 @3
-OUTER_SPRINT er_tra4 @4
-OUTER_SPRINT er_tra5 @5
-OUTER_SPRINT er_tra6 @6
-OUTER_SPRINT er_tra7 @7
-OUTER_SPRINT er_tra8 @8
-OUTER_SPRINT er_tra9 @9
-OUTER_SPRINT er_tra10 @10
-
-// Add Underscore Prefix for Tutu
-ACTION_IF GAME_IS ~tutu_totsc~ THEN BEGIN
-  PRINT @108
-  OUTER_SPRINT er_pf ~_~
-END ELSE BEGIN
-  OUTER_SPRINT er_pf ~~
-END
-
-// Detect method used for Damage Bonus vs. Lycanthropes
-COPY_EXISTING ~FT1DAM.EFF~ ~override~
-  SET er_eff = 0
-  READ_BYTE 0x10 er_dbl
-  PATCH_IF er_dbl = 0x0c BEGIN
-    PATCH_PRINT @113
-    SET er_eff = 2
-  END 
-  PATCH_IF er_dbl = 0xb3 BEGIN
-    PATCH_PRINT @112
-    SET er_eff = 1
-  END 
-BUT_ONLY_IF_IT_CHANGES
+INCLUDE ~%MOD_FOLDER%\lib\er_lib_ssa.tpa~
 
 ACTION_IF er_eff = 2 THEN BEGIN 
   COPY ~Silver_Staff_of_Aule\stuff\ER_STDM.EFF~ ~override~
 END
 
-ACTION_IF GAME_IS ~bgee totsc tutu_totsc~ THEN BEGIN 
+COPY ~Silver_Staff_of_Aule\stuff\ER_IST2.BAM~ ~override/ER_IST1.BAM~
 
-  // Check for BGEE
-  ACTION_IF GAME_IS ~bgee~ THEN BEGIN
-    PRINT @110
-  END
+COPY_EXISTING ~%er_itn1%.ITM~ ~override/%er_itn2%.ITM~ // Aule's Staff
+  PATCH_IF SOURCE_SIZE > 0x71 BEGIN
+    WRITE_BYTE 0x19 THIS BOR 0b00000011 // Add Silver & Cold Iron Flags
+    WRITE_LONG 0x34 7500 // New Price
 
-  // Check for Vanilla TotSC
-  ACTION_IF GAME_IS ~totsc~ THEN BEGIN
-    PRINT @109
-  END
-
-  COPY ~Silver_Staff_of_Aule\stuff\ER_IST2.BAM~ ~override/ER_IST1.BAM~
-
-  COPY_EXISTING ~%er_pf%STAF08.ITM~ ~override~ // Aule's Staff
-    PATCH_IF SOURCE_SIZE > 0x71 BEGIN
-      READ_BYTE 0x19 er_flg // Read Flags (2nd byte only)
-      WRITE_BYTE 0x19 (er_flg BOR 0b00000011) // Add Silver & Cold Iron Flags
-      WRITE_LONG 0x34 7500 // New Price
-
-      // Add +1 Damage Bonus vs. Lycanthropes
-      PATCH_IF er_eff = 1 BEGIN
-        LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EQEFFECT~
-          INT_VAR
-            opcode = 177               // Type: #177 (Use EFF File)
-            target = 1                 // Target: Self
-            parameter2 = 2             // IDS Target: EA.IDS
-            timing = 2                 // Timing Mode: Instant/While Equipped
-            probability1 = 100         // Probability1: 100
-          STR_VAR resource = ~FT1DAM~  // Resource: FT1DAM
-        END
-      END
-      PATCH_IF er_eff = 2 BEGIN
-        LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EFFECT~
-          INT_VAR
-            type = 1                    // Melee
-            opcode = 177                // Type: #177 (Use EFF File)
-            target = 2                  // Target: Preset Target
-            parameter1 = 122            // IDS Value: LYCANTHROPE
-            parameter2 = 4              // IDS Target: RACE.IDS
-            timing = 1                  // Timing Mode: Instant/Permanent Until Death
-            probability1 = 100          // Probability1: 100
-            insert_point = 0            // First Effect
-          STR_VAR resource = ~ER_STDM~  // Resource: ER_STDM
-        END
-      END
-
-      // Add +1 THAC0 Bonus vs. Lycanthropes
+    // Add +1 Damage Bonus vs. Lycanthropes
+    PATCH_IF er_eff = 1 BEGIN
       LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EQEFFECT~
         INT_VAR
           opcode = 177               // Type: #177 (Use EFF File)
@@ -127,126 +49,10 @@ ACTION_IF GAME_IS ~bgee totsc tutu_totsc~ THEN BEGIN
           parameter2 = 2             // IDS Target: EA.IDS
           timing = 2                 // Timing Mode: Instant/While Equipped
           probability1 = 100         // Probability1: 100
-        STR_VAR resource = ~FT1HIT~  // Resource: FT1HIT
+        STR_VAR resource = ~FT1DAM~  // Resource: FT1DAM
       END
-
-      // Add +1 Enchantment vs. Lycanthropes (EEs only)
-      PATCH_IF GAME_IS ~bgee~ BEGIN
-        LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EQEFFECT~
-          INT_VAR
-            opcode = 344        // Type: #344 (Enchantment vs. Creature Type)
-            target = 1          // Target: Self
-            parameter1 = 122    // IDS Value: LYCANTHROPE
-            parameter2 = 4      // IDS Target: RACE.IDS
-            timing = 2          // Timing Mode: Instant/While Equipped
-            probability1 = 100  // Probability1: 100
-            special = 4         // Enchantment: 4
-        END
-      END
-
-      // Make the Staff Look More Like Silver
-      WRITE_ASCII 0x3a ~ER_IST1~ #8
-      READ_LONG 0x64 er_ability_offset
-      WRITE_ASCII %er_ability_offset%+4 ~ER_IST1~ #8
-      LPF DELETE_ITEM_EQEFFECT
-        INT_VAR
-          opcode_to_delete = 7
-      END
-      LPF DELETE_ITEM_EQEFFECT
-        INT_VAR
-          opcode_to_delete = 8
-      END
-      LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EQEFFECT~
-        INT_VAR
-          opcode = 7          // Type: #7 (Set Character Colours by Palette)
-          target = 1          // Target: Self
-          parameter1 = 27     // Param1: Gradient Number
-          parameter2 = 21     // Param2: Location
-          timing = 2          // Timing Mode: Instant/While Equipped
-          probability1 = 100  // Probability1: 100
-      END
-      LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EQEFFECT~
-        INT_VAR
-          opcode = 7          // Type: #7 (Set Character Colours by Palette)
-          target = 1          // Target: Self
-          parameter1 = 27     // Param1: Gradient Number
-          parameter2 = 20     // Param2: Location
-          timing = 2          // Timing Mode: Instant/While Equipped
-          probability1 = 100  // Probability1: 100
-      END
-      LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EQEFFECT~
-        INT_VAR
-          opcode = 7          // Type: #7 (Set Character Colours by Palette)
-          target = 1          // Target: Self
-          parameter1 = 27     // Param1: Gradient Number
-          parameter2 = 16     // Param2: Location
-          timing = 2          // Timing Mode: Instant/While Equipped
-          probability1 = 100  // Probability1: 100
-      END
-
-      SAY NAME2 @11
-
-      READ_STRREF IDENTIFIED_DESC er_str1 // Read Identified Description
-
-      // Read Some of the Staff Properties
-      GET_OFFSET_ARRAY er_abar 0x64 4 0x68 2 0 0 0x38
-      PHP_EACH er_abar AS er_nab => er_abof BEGIN
-        READ_BYTE er_abof er_type 
-        PATCH_IF er_type = 1 BEGIN
-          READ_SHORT er_abof+0x14 er_thac0
-          READ_BYTE er_abof+0x18 er_dam1
-          READ_BYTE er_abof+0x16 er_dam2
-          READ_SHORT er_abof+0x1a er_bdam
-          READ_SHORT er_abof+0x1c er_dtype
-
-          //PATCH_PRINT ~THAC0:%er_thac0%~
-          //PATCH_PRINT ~DAMAGE:%er_dam1%D%er_dam2%+%er_bdam% (%er_dtype%)~
-
-        END
-      END
-
-      // Replace Relevant Portions of the Identified Description
-      INNER_PATCH_SAVE er_str1 ~%er_str1%~ BEGIN
-        REPLACE_TEXTUALLY ~%er_tra1%~ ~%er_tra2%~
-        REPLACE_TEXTUALLY ~%er_tra3%~ ~~
-
-        //REPLACE_TEXTUALLY ~THAC[0O]:.+[%LNL%%MNL%%WNL%]~ ~~
-        //REPLACE_TEXTUALLY ~Damage:.+[%LNL%%MNL%%WNL%]~ ~~
-
-        REPLACE_TEXTUALLY ~%er_tra4%~ ~%er_tra5%~
-        REPLACE_TEXTUALLY ~%er_tra6%~ ~%er_tra7%~
-      END
-
-      PATCH_IF ~%er_str1%~ STRING_CONTAINS_REGEXP ~%er_tra8%~ ||
-               ~%er_str1%~ STRING_CONTAINS_REGEXP ~%er_tra9%~ ||
-               ~%er_str1%~ STRING_CONTAINS_REGEXP ~%er_tra10%~ BEGIN
-        PATCH_PRINT @115
-        SAY_EVALUATED IDENTIFIED_DESC ~%er_str0%~ // Full Description
-      END ELSE BEGIN
-        PATCH_PRINT @114
-        SAY_EVALUATED IDENTIFIED_DESC ~%er_str1%~ // Patched Description
-      END
-
     END
-  BUT_ONLY_IF_IT_CHANGES
-END ELSE BEGIN
-
-  // Add Staff for BGT
-  PRINT @111
-
-  COPY ~Silver_Staff_of_Aule\stuff\ER_IST2.BAM~ ~override/ER_IST1.BAM~
-
-  COPY ~Silver_Staff_of_Aule\stuff\ER_STA08.ITM~ ~override~ // Aule's Staff
-    SAY_EVALUATED IDENTIFIED_DESC ~%er_str0%~
-    SAY NAME2 @11
-    PATCH_PRINT @115
     PATCH_IF er_eff = 2 BEGIN
-
-      LAUNCH_PATCH_FUNCTION ~DELETE_EFFECT~
-        INT_VAR match_opcode = 177          // Type: #177 (Use EFF File)
-        STR_VAR match_resource = ~FT1DAM~  // Resource: FT1DAM
-      END
-
       LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EFFECT~
         INT_VAR
           type = 1                    // Melee
@@ -261,26 +67,126 @@ END ELSE BEGIN
       END
     END
 
+    // Add +1 THAC0 Bonus vs. Lycanthropes
+    LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EQEFFECT~
+      INT_VAR
+        opcode = 177               // Type: #177 (Use EFF File)
+        target = 1                 // Target: Self
+        parameter2 = 2             // IDS Target: EA.IDS
+        timing = 2                 // Timing Mode: Instant/While Equipped
+        probability1 = 100         // Probability1: 100
+      STR_VAR resource = ~FT1HIT~  // Resource: FT1HIT
+    END
+
+    // Add +1 Enchantment vs. Lycanthropes (EEs only)
+    READ_LONG 0x60 er_enc
+    PATCH_IF GAME_IS ~bgee eet~ BEGIN
+      LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EQEFFECT~
+        INT_VAR
+          opcode = 344            // Type: #344 (Enchantment vs. Creature Type)
+          target = 1              // Target: Self
+          parameter1 = 122        // IDS Value: LYCANTHROPE
+          parameter2 = 4          // IDS Target: RACE.IDS
+          timing = 2              // Timing Mode: Instant/While Equipped
+          probability1 = 100      // Probability1: 100
+          special = %er_enc% + 1  // Enchantment
+      END
+    END
+
+    // Make the Staff Look More Like Silver
+    WRITE_ASCII 0x3a ~ER_IST1~ #8
+    READ_LONG 0x64 er_ability_offset
+    WRITE_ASCII %er_ability_offset%+4 ~ER_IST1~ #8
+    LPF DELETE_ITEM_EQEFFECT
+      INT_VAR
+        opcode_to_delete = 7
+    END
+    LPF DELETE_ITEM_EQEFFECT
+      INT_VAR
+        opcode_to_delete = 8
+    END
+    LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EQEFFECT~
+      INT_VAR
+        opcode = 7          // Type: #7 (Set Character Colours by Palette)
+        target = 1          // Target: Self
+        parameter1 = 27     // Param1: Gradient Number
+        parameter2 = 21     // Param2: Location
+        timing = 2          // Timing Mode: Instant/While Equipped
+        probability1 = 100  // Probability1: 100
+    END
+    LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EQEFFECT~
+      INT_VAR
+        opcode = 7          // Type: #7 (Set Character Colours by Palette)
+        target = 1          // Target: Self
+        parameter1 = 27     // Param1: Gradient Number
+        parameter2 = 20     // Param2: Location
+        timing = 2          // Timing Mode: Instant/While Equipped
+        probability1 = 100  // Probability1: 100
+    END
+    LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EQEFFECT~
+      INT_VAR
+        opcode = 7          // Type: #7 (Set Character Colours by Palette)
+        target = 1          // Target: Self
+        parameter1 = 27     // Param1: Gradient Number
+        parameter2 = 16     // Param2: Location
+        timing = 2          // Timing Mode: Instant/While Equipped
+        probability1 = 100  // Probability1: 100
+    END
+
+    // Read Some of the Staff Properties
+    GET_OFFSET_ARRAY er_abar 0x64 4 0x68 2 0 0 0x38
+    PHP_EACH er_abar AS er_nab => er_abof BEGIN
+      READ_BYTE er_abof er_type 
+      PATCH_IF er_type = 1 BEGIN
+        READ_SHORT er_abof+0x14 er_thac0
+        READ_BYTE er_abof+0x18 er_dam1
+        READ_BYTE er_abof+0x16 er_dam2
+        READ_SHORT er_abof+0x1a er_bdam
+        READ_SHORT er_abof+0x1c er_dtype
+        READ_BYTE er_abof+0x12 er_speed
+      END
+    END
+
+    // Read Some other Staff Properties
+    READ_LONG 0x4c er_weight
+    READ_BYTE 0x31 er_prof
+    READ_SHORT 0x26 er_mstr
+    READ_BYTE 0x28 er_mbon
+    READ_BYTE 0x2c er_mdex
+    READ_BYTE 0x30 er_mcon
+    READ_BYTE 0x2a er_mint
+    READ_BYTE 0x2e er_mwis
+    READ_SHORT 0x32 er_mcha
+    READ_BYTE 0x18 er_flag
+
+    // Add Item Description and Name Based on Actual Item Properties
+    LPM er_desc
+    SAY_EVALUATED NAME2 ~%er_txt0% +%er_thac0%~  // New Name
+    SAY_EVALUATED IDENTIFIED_DESC ~%er_ide1%~    // New Description
+
+  END
+BUT_ONLY_IF_IT_CHANGES
+
+ACTION_IF GAME_IS ~bgt~ BEGIN
   COPY_EXISTING ~ULGOTH.STO~ ~override~ // Ulgoth's Beard Store and Inn
     PATCH_IF SOURCE_SIZE > 0x9b BEGIN
       ADD_STORE_ITEM ~ER_STA08~ AFTER ~STAF08~ #0 #0 #0 ~IDENTIFIED~ #1
       REMOVE_STORE_ITEM ~STAF08~
     END
   BUT_ONLY_IF_IT_CHANGES
-
 END
 
-BEGIN @104
+BEGIN @103
 SUBCOMPONENT @102
 REQUIRE_FILE ~override/ER_IST1.BAM~ @107
   COPY ~Silver_Staff_of_Aule\stuff\ER_IST2.BAM~ ~override/ER_IST1.BAM~
 
-BEGIN @105
+BEGIN @104
 SUBCOMPONENT @102
 REQUIRE_FILE ~override/ER_IST1.BAM~ @107
   COPY ~Silver_Staff_of_Aule\stuff\ER_IST3.BAM~ ~override/ER_IST1.BAM~
 
-BEGIN @103
+BEGIN @105
 SUBCOMPONENT @102
 REQUIRE_FILE ~override/ER_IST1.BAM~ @107
   COPY ~Silver_Staff_of_Aule\stuff\ER_IST1.BAM~ ~override/ER_IST1.BAM~

@@ -1,15 +1,19 @@
 @101  = ~Silver Staff of Aule~
 @102  = ~Alternate Icons~
-@103  = ~Icon from Staff of Striking~
-@104  = ~Icon N.1 by CrevsDaak (default)~
-@105  = ~Icon N.2 by CrevsDaak~
-@106  = ~This mod requires Tutu TotSC, vanilla TotSC, BGEE or BGT!~
+@103  = ~Icon N.1 by CrevsDaak (default)~
+@104  = ~Icon N.2 by CrevsDaak~
+@105  = ~Icon from Staff of Striking~
+@106  = ~This mod requires Tutu TotSC, vanilla TotSC, BGEE, EET or BGT!~
 @107  = ~You need to install the Silver Staff to select this option.~
-@108  = ~Tutu TotSC detected!~
-@109  = ~Vanilla TotSC detected!~
-@110  = ~BGEE detected!~
-@111  = ~BGT detected!~
-@112  = ~Old EFFs detected!~
-@113  = ~New EFFs detected!~
-@114  = ~The staff description has been updated!~
-@115  = ~The staff description has been replaced!~
+@108  = ~Tutu TotSC detected!
+~
+@109  = ~Vanilla TotSC detected!
+~
+@110  = ~BGEE detected!
+~
+@111  = ~EET detected!
+~
+@112  = ~BGT detected!
+~
+@113  = ~Old EFFs detected!~
+@114  = ~New EFFs detected!~

@@ -1,18 +1,23 @@
 @101  = ~Bastone Argentato di Aule~
 @102  = ~Icone Alternative~
-@103  = ~Icona del Bastone del Colpire~
-@104  = ~Icona N.1 creata da CrevsDaak (scelta predefinita)~
-@105  = ~Icona N.2 creata da CrevsDaak~
-@106  = ~Questa mod richiede Tutu TotSC, vanilla TotSC, BGEE or BGT!~
+@103  = ~Icona N.1 creata da CrevsDaak (scelta predefinita)~
+@104  = ~Icona N.2 creata da CrevsDaak~
+@105  = ~Icona del Bastone del Colpire~
+@106  = ~Questa mod richiede Tutu TotSC, vanilla TotSC, BGEE, EET or BGT!~
 @107  = ~Questa componente richiede il Bastone Argentato.~
-@108  = ~Tutu TotSC individuato!~
-@109  = ~Vanilla TotSC individuato!~
-@110  = ~BGEE individuato!~
-@111  = ~BGT individuato!~
-@112  = ~Vecchi EFF individuati!~
-@113  = ~Nuovi EFF individuati!~
-@114  = ~La descrizione del bastone e' stata aggiornata!~
-@115  = ~La descrizione del bastone e' stata sostituita!~
+@108  = ~Tutu TotSC individuato!
+~
+@109  = ~Vanilla TotSC individuato!
+~
+@110  = ~BGEE individuato!
+~
+
+@111  = ~EET individuato!
+~
+@112  = ~BGT individuato!
+~
+@113  = ~Vecchi EFF individuati!~
+@114  = ~Nuovi EFF individuati!~
 
 
 @-1000= "La mod %TP2_FILE_NAME% ha"

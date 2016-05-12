@@ -1,0 +1,181 @@
+// Detect method used for Damage Bonus vs. Lycanthropes
+COPY_EXISTING ~FT1DAM.EFF~ ~override~
+  SET er_eff = 0
+  READ_BYTE 0x10 er_dbl
+  PATCH_IF er_dbl = 0x0c BEGIN
+    PATCH_PRINT @114
+    SET er_eff = 2
+  END 
+  PATCH_IF er_dbl = 0xb3 BEGIN
+    PATCH_PRINT @113
+    SET er_eff = 1
+  END 
+BUT_ONLY_IF_IT_CHANGES
+
+// Detect Game and Add Underscore Prefix for Tutu
+ACTION_IF GAME_IS ~tutu_totsc~ THEN BEGIN
+  OUTER_SPRINT er_itn1 ~_STAF08~
+  OUTER_SPRINT er_itn2 ~_STAF08~
+  PRINT @108
+END
+ACTION_IF GAME_IS ~totsc~ THEN BEGIN
+  OUTER_SPRINT er_itn1 ~STAF08~
+  OUTER_SPRINT er_itn2 ~STAF08~
+  PRINT @109
+END 
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+  OUTER_SPRINT er_itn1 ~STAF08~
+  OUTER_SPRINT er_itn2 ~STAF08~
+  PRINT @110
+END
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+  OUTER_SPRINT er_itn1 ~STAF08_~
+  OUTER_SPRINT er_itn2 ~STAF08_~
+  PRINT @111
+END
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+  OUTER_SPRINT er_itn1 ~STAF08~
+  OUTER_SPRINT er_itn2 ~ER_STA08~
+  PRINT @112
+END
+
+// Strings from TRA File
+OUTER_SPRINT er_txt0 @0
+OUTER_SPRINT er_txt1 @1
+OUTER_SPRINT er_txt2 @2
+OUTER_SPRINT er_txt3 @3
+OUTER_SPRINT er_txt4 @4
+OUTER_SPRINT er_txt5 @5
+OUTER_SPRINT er_txt6 @6
+OUTER_SPRINT er_txt7 @7
+OUTER_SPRINT er_txt8 @8
+OUTER_SPRINT er_txt9 @9
+OUTER_SPRINT er_txt10 @10
+OUTER_SPRINT er_txt11 @11
+OUTER_SPRINT er_txt12 @12
+OUTER_SPRINT er_txt13 @13
+OUTER_SPRINT er_txt14 @14
+OUTER_SPRINT er_txt15 @15
+OUTER_SPRINT er_txt16 @16
+OUTER_SPRINT er_txt17 @17
+OUTER_SPRINT er_txt18 @18
+OUTER_SPRINT er_txt19 @19
+OUTER_SPRINT er_txt20 @20
+OUTER_SPRINT er_txt21 @21
+OUTER_SPRINT er_txt22 @22
+OUTER_SPRINT er_txt23 @23
+
+OUTER_SPRINT er_damt00 @1000
+OUTER_SPRINT er_damt01 @1001
+OUTER_SPRINT er_damt02 @1002
+OUTER_SPRINT er_damt03 @1003
+OUTER_SPRINT er_damt04 @1004
+OUTER_SPRINT er_damt05 @1005
+OUTER_SPRINT er_damt06 @1006
+OUTER_SPRINT er_damt07 @1007
+OUTER_SPRINT er_damt08 @1008
+OUTER_SPRINT er_damt09 @1009
+
+OUTER_SPRINT er_weap89 @2000
+OUTER_SPRINT er_weap90 @2001
+OUTER_SPRINT er_weap91 @2002
+OUTER_SPRINT er_weap92 @2003
+OUTER_SPRINT er_weap93 @2004
+OUTER_SPRINT er_weap94 @2005
+OUTER_SPRINT er_weap95 @2006
+OUTER_SPRINT er_weap96 @2007
+OUTER_SPRINT er_weap97 @2008
+OUTER_SPRINT er_weap98 @2009
+OUTER_SPRINT er_weap99 @2010
+OUTER_SPRINT er_weap100 @2011
+OUTER_SPRINT er_weap101 @2012
+OUTER_SPRINT er_weap102 @2013
+OUTER_SPRINT er_weap103 @2014
+OUTER_SPRINT er_weap104 @2015
+OUTER_SPRINT er_weap105 @2016
+OUTER_SPRINT er_weap106 @2017
+OUTER_SPRINT er_weap107 @2018
+OUTER_SPRINT er_weap115 @2019
+
+OUTER_SPRINT er_us00 @3000
+OUTER_SPRINT er_us01 @3001
+
+// First Array
+ACTION_DEFINE_ARRAY er_damt BEGIN ~%er_damt00%~ ~%er_damt01%~ ~%er_damt02%~ ~%er_damt03%~
+  ~%er_damt04%~ ~%er_damt05%~ ~%er_damt06%~ ~%er_damt07%~ ~%er_damt08%~ ~%er_damt09%~
+END
+
+// Second Array
+ACTION_DEFINE_ARRAY er_weap BEGIN ~%er_weap89%~ ~%er_weap90%~ ~%er_weap91%~ ~%er_weap92%~
+  ~%er_weap93%~ ~%er_weap94%~ ~%er_weap95%~ ~%er_weap96%~ ~%er_weap97%~ ~%er_weap98%~
+  ~%er_weap99%~ ~%er_weap100%~ ~%er_weap101%~ ~%er_weap102%~ ~%er_weap103%~ ~%er_weap104%~
+  ~%er_weap105%~ ~%er_weap106%~ ~%er_weap107%~ ~%er_weap115%~
+END
+
+// New Description
+DEFINE_PATCH_MACRO er_desc BEGIN
+
+  SPRINT er_req ~~
+  SPRINT er_ret ~
+~
+  PATCH_IF er_mstr > 0 BEGIN SPRINT er_req ~ %er_mstr% %er_txt15%%er_ret%~ END
+  PATCH_IF er_mstr = 18 BEGIN
+    PATCH_IF er_mbon > 0 BEGIN
+      SPRINT er_req ~ %er_mstr%/%er_mbon% %er_txt15%%er_ret%~
+    END
+  END
+  PATCH_IF er_mdex > 0 BEGIN SPRINT er_req ~%er_req% %er_mdex% %er_txt16%%er_ret%~ END
+  PATCH_IF er_mcon > 0 BEGIN SPRINT er_req ~%er_req% %er_mcon% %er_txt17%%er_ret%~ END
+  PATCH_IF er_mint > 0 BEGIN SPRINT er_req ~%er_req% %er_mint% %er_txt18%%er_ret%~ END
+  PATCH_IF er_mwis > 0 BEGIN SPRINT er_req ~%er_req% %er_mwis% %er_txt19%%er_ret%~ END
+  PATCH_IF er_mcha > 0 BEGIN SPRINT er_req ~%er_req% %er_mcha% %er_txt20%%er_ret%~ END
+  PATCH_IF NOT ~%er_req%~ STRING_EQUAL ~~ BEGIN SPRINT er_req ~%er_txt14%%er_ret%%er_req%~ END
+
+  READ_STRREF IDENTIFIED_DESC er_str1
+  SPRINT er_str2 ~%er_str1%~
+  INNER_PATCH_SAVE er_str2 ~%er_str2%~ BEGIN
+    REPLACE_TEXTUALLY ~%er_txt21%~ ~~
+    REPLACE_TEXTUALLY ~%er_txt22%~ ~~
+    REPLACE_TEXTUALLY ~%er_txt23%~ ~\1~
+  END
+
+  SET er_thac1 = er_thac0+1
+  SET er_bdam2 = er_bdam+1
+
+  SPRINT er_dtypes $er_damt(~%er_dtype%~)
+
+  PATCH_IF er_prof = 115 BEGIN SET er_prof = 108 END
+  SET er_prof = %er_prof% - 89 
+  SPRINT er_profs $er_weap(~%er_prof%~)
+
+  PATCH_IF er_flag BAND BIT1 BEGIN
+    SPRINT er_typew ~%er_txt11%~
+  END ELSE BEGIN
+    SPRINT er_typew ~%er_txt12%~
+  END
+
+  SPRINT er_ide1 ~%er_txt1%%er_txt2%%er_str2%%er_txt3%+%er_thac0%, +%er_thac1%%er_txt4%
+%er_txt5%%er_dam1%%er_txt6%%er_dam2%+%er_bdam%, +%er_bdam2%%er_txt4%
+%er_txt7%%er_dtypes%
+%er_txt8%%er_speed%
+%er_txt9%%er_profs%
+%er_txt10%%er_typew%
+%er_req%
+%er_txt13%%er_weight%~
+
+  PATCH_IF GAME_IS ~tutu_totsc bgt~ THEN BEGIN
+
+    SPRINT er_ide1 ~%er_txt1%%er_txt2%%er_str2%%er_txt3% +%er_thac0%, +%er_thac1%%er_txt4%
+%er_txt5% %er_dam1%%er_txt6%%er_dam2% +%er_bdam%, +%er_bdam2%%er_txt4%
+%er_txt7% %er_dtypes%
+%er_txt13%%er_weight%
+%er_txt8%%er_speed%
+%er_txt9%%er_profs%
+%er_txt10% %er_typew%
+%er_req%
+%er_us00%
+ %er_us01%~
+
+  END
+
+END

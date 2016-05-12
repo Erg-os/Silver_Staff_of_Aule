@@ -1,5 +1,5 @@
-Il Bastone Argentato di Aule (versione 9.0)
--------------------------------------------
+Il Bastone Argentato di Aule (versione 10.0 BETA)
+-------------------------------------------------
 
 Autore: Erg (https://forums.beamdog.com)
 Compatibilità: Funziona con Tutu TotSC, vanilla TotSC, BG:EE e BGT
@@ -41,7 +41,7 @@ NOTA per BGT:
 BGT sostituisce il Bastone di Aule con il Bastone Marziale. Quindi questa mod
 ripristina il Bastone di Aule nella locanda di Ulgoth's Beard, ma non modificherà
 altre istanze del Bastone Marziale. Se avete già visitato la locanda ed esaminato
-gli oggetti in vendita, sarà necesario ricominciare una nuova partita per il
+gli oggetti in vendita, sarà necessario ricominciare una nuova partita per il
 corretto funzionamento di questa mod.
 
 Ciò vale solo per BGT. Per le altre versioni di BG, incluso BG:EE, non si dovrà
@@ -70,20 +70,20 @@ file chitin.key) ed eseguire il file setup-Silver_Staff_of_Aule.exe
 Per disinstallare eseguire di nuovo setup-Silver_Staff_of_Aule.exe
 
 ____________________
-Installatione (Mac):
+Installazione (Mac):
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 Seguire le istruzioni tradotte da Pibaro sul forum:
 https://forums.beamdog.com/discussion/16640/guida-allinstallazione-dei-mod-di-bgee-per-mac-osx/p1
 
-Una guida più recente (in inlgese) è stata scritta da AstroBryGuy:
+Una guida più recente (in inglese) è stata scritta da AstroBryGuy:
 https://forums.beamdog.com/discussion/31155/the-hitchhikers-guide-to-installing-mods-on-osx/p1
 
-subtledoctor ha realizzato un pogramma che facilita l'installazione sui Mac. Lo trovate
+subtledoctor ha realizzato un programma che facilita l'installazione sui Mac. Lo trovate
 nella sezione inglese del forum:
 https://forums.beamdog.com/discussion/17717/tool-easy-mod-installer-weidu-launcher-for-os-x/p1
 
 _____________________
-Installatione (iPad):
+Installazione (iPad):
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 Seguire le istruzioni (in inglese) fornite da mars0124 sul forum:
 https://forums.beamdog.com/discussion/15979/howto-modding-bg-ee-on-the-ipad/p1
@@ -107,6 +107,10 @@ https://forums.beamdog.com/discussion/43990/how-to-install-mods-on-android/p1
 ________________
 Version History
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+  ?? ?????? ???? - Versione 10.0
+    Migliorato il codice usato per aggiornare la descrizione del bastone
+    Migliorata la compatibilità con altre mod
+
   05 Maggio 2016 - Versione 9.0
     Il bastone non danneggia più chi lo impugna se il gioco è stato aggiornato 
     Il nome della mod è stato cambiato ed è ora "Bastone Argentato di Aule"
@@ -117,7 +121,7 @@ Version History
     Traduzione in polacco migliorata da Cahir
     Aggiornate le istruzioni per l'installazione 
     Introdotti diversi miglioramenti minori
-    Aggiornato WeiDU all versione 239
+    Aggiornato WeiDU alla versione 239
     La mod è stata rilocata su GitHub
 
   11 Agosto 2014 - Versione 8
@@ -127,7 +131,7 @@ Version History
 
   21 Aprile 2014 - Versione 7
     Aggiunta BAM originale (creata da CrevsDaak)
-    Aggiornato WeiDU alla version 236
+    Aggiornato WeiDU alla versione 236
     Rimossi i file .bat (non sono più necessari con WeiDU 236)
     Aggiornate le istruzioni per l'installazione (ed i link)
 
