@@ -1,5 +1,5 @@
 Silver Staff of Aule (version 9.1)
-----------------------------------------
+----------------------------------
 
 Author: Erg (at https://forums.beamdog.com)
 BG Version: This mod works with Tutu TotSC, vanilla TotSC, BG:EE and BGT

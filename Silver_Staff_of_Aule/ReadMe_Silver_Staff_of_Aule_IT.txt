@@ -1,5 +1,5 @@
 Il Bastone Argentato di Aule (versione 9.1)
--------------------------------------------------
+-------------------------------------------
 
 Autore: Erg (https://forums.beamdog.com)
 Compatibilità: Funziona con Tutu TotSC, vanilla TotSC, BG:EE e BGT
