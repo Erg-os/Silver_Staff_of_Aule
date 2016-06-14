@@ -1,6 +1,6 @@
-# Silver Staff of Aule (version 9.0) #
+# Silver Staff of Aule (version 9.1) #
 
--------------
+---
 
 A mod for Tutu TotSC, vanilla TotSC, BG:EE and BGT
 

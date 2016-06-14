@@ -1,6 +1,6 @@
 BACKUP ~Silver_Staff_of_Aule/backup~
 AUTHOR ~Erg, at https://forums.beamdog.com~
-VERSION ~v9.0~
+VERSION ~v9.1~
 
 ALWAYS
   // Macros to handle multiple tra encodings (slightly adapted from Wisp's original code)
@@ -72,6 +72,20 @@ ACTION_IF er_eff = 2 THEN BEGIN
   COPY ~Silver_Staff_of_Aule\stuff\ER_STDM.EFF~ ~override~
 END
 
+// Detect if opcode 344 exists
+COPY_EXISTING ~SW1H18.ITM~ ~override~ // Sword of Balduran
+  SET er_op344 = 0
+  PATCH_IF (SOURCE_SIZE > 0x71) BEGIN
+    GET_OFFSET_ARRAY er_ge_array ITM_V10_GEN_EFFECTS
+    PHP_EACH er_ge_array AS er_int => er_ge_off BEGIN
+      READ_SHORT er_ge_off er_ge_type
+      PATCH_IF er_ge_type = 344 BEGIN
+        SET er_op344 = 1
+      END
+    END
+  END
+BUT_ONLY_IF_IT_CHANGES
+
 ACTION_IF GAME_IS ~bgee totsc tutu_totsc~ THEN BEGIN 
 
   // Check for BGEE
@@ -130,8 +144,8 @@ ACTION_IF GAME_IS ~bgee totsc tutu_totsc~ THEN BEGIN
         STR_VAR resource = ~FT1HIT~  // Resource: FT1HIT
       END
 
-      // Add +1 Enchantment vs. Lycanthropes (EEs only)
-      PATCH_IF GAME_IS ~bgee~ BEGIN
+      // Add +1 Enchantment vs. Lycanthropes (BGEE v2+ only)
+      PATCH_IF er_op344 BEGIN
         LAUNCH_PATCH_FUNCTION ~ADD_ITEM_EQEFFECT~
           INT_VAR
             opcode = 344        // Type: #344 (Enchantment vs. Creature Type)
